@@ -18,27 +18,76 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Test = function (_React$Component) {
-  _inherits(Test, _React$Component);
+// import NotificationMessage from './NotificationMessage'
 
-  function Test() {
-    _classCallCheck(this, Test);
+var Notifications = function (_React$Component) {
+  _inherits(Notifications, _React$Component);
 
-    return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
+  function Notifications() {
+    _classCallCheck(this, Notifications);
+
+    return _possibleConstructorReturn(this, (Notifications.__proto__ || Object.getPrototypeOf(Notifications)).apply(this, arguments));
   }
 
-  _createClass(Test, [{
+  _createClass(Notifications, [{
     key: 'render',
     value: function render() {
+      var notifications = this.props.notifications;
+
       return _react2.default.createElement(
         'div',
         null,
-        'Test'
+        notifications.length ? this.hasMessages(notifications) : this.emptyInbox()
+      );
+    }
+  }, {
+    key: 'hasMessages',
+    value: function hasMessages(notifications) {
+      var action = this.props.action;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'notification-dropdown' },
+        _react2.default.createElement(
+          'div',
+          { className: 'notifications-mark-all-as-read', onClick: function onClick() {
+              return action();
+            } },
+          'Mark All as Read'
+        ),
+        'import React from \'react\'',
+        _react2.default.createElement(
+          'div',
+          { className: 'notification-message-container' },
+          this.messages(notifications)
+        )
+      );
+    }
+  }, {
+    key: 'messages',
+    value: function messages(notifications) {
+      return notifications.map(function (notification) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          'My Message'
+        )
+        // <NotificationMessage key={notification.id} notification={notification} />
+        ;
+      });
+    }
+  }, {
+    key: 'emptyInbox',
+    value: function emptyInbox() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'notifications-empty' },
+        'Sorry you have no notifications to show'
       );
     }
   }]);
 
-  return Test;
+  return Notifications;
 }(_react2.default.Component);
 
-exports.default = Test;
+exports.default = Notifications;

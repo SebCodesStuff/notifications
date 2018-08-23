@@ -1,0 +1,31 @@
+/// Mixin to customize scrollbars
+/// this does not work in all browsers
+/// @param {back-color} $back-color - color of the background the scrollbar is on. not the scrollbar's bg color
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($primary, white, 75%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+
+@mixin scrollbars($back-color, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+  ::-webkit-scrollbar {
+      width: 14px;
+      height: 18px;
+      border-radius: 9px;
+      cursor: pointer;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+      border-width: 3px;
+      border-color: $back-color;
+      border-style: solid;
+      border-radius: 8px;
+      cursor: pointer;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+      border: 6px solid $back-color;
+      border-radius: 10px;
+      cursor: pointer;
+  }

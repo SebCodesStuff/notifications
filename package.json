@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build-scss": "babel sass --outdir build/sass --ignore test,node_modules sass && npm run build",
     "build": "babel src --out-dir build --ignore test,node_modules src"
   },
   "author": "BrioVR",
