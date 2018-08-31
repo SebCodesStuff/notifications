@@ -19,3 +19,14 @@
   max-height: 250px;
   overflow-y: auto;
 }
+
+.show-notification {
+  background-color: red;
+  border-radius: 50%;
+  float: right;
+  position: absolute;
+}
+
+.hide-notification {
+  display: none;
+}
