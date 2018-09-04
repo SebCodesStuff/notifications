@@ -79,7 +79,7 @@ var Notifications = function (_React$Component) {
             placeholderAvatarImg = _props.placeholderAvatarImg,
             fallbackImage = _props.fallbackImage,
             worldUrl = _props.worldUrl,
-            action = _props.action;
+            viewAction = _props.viewAction;
 
         var avUrl = avatar ? worldCdn + '/v1/users/' + userUuid + '/' + avatar : placeholderAvatarImg;
         var scrUrl = screenshot ? worldCdn + '/v1/worlds/' + worldUuid + '/' + screenshot : fallbackImage;
@@ -88,11 +88,10 @@ var Notifications = function (_React$Component) {
           avatarUrl: avUrl,
           screenshotUrl: scrUrl,
           notification: notification,
-          worldCdn: worldCdn,
           placeholderAvatarImg: placeholderAvatarImg,
           fallbackImage: fallbackImage,
           worldUrl: worldUrl,
-          viewAction: action });
+          viewAction: viewAction });
       });
     }
   }, {

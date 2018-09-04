@@ -7,12 +7,11 @@ export default class NotificationMessage extends React.Component {
 
   render () {
     const { received_at, name, type, unviewed, likes, comments, world_uuid: worldUuid, notification_id: id } = this.props.notification
-    const { avatarUrl, screenshotUrl, worldUrl, action } = this.props
-
+    const { avatarUrl, screenshotUrl, worldUrl, viewAction } = this.props
     return (
       <Link to={`${worldUrl}/${worldUuid}`} target='_blank'>
         <div className={unviewed ? 'notification-unviewed' : 'notification-viewed'}>
-          <div className='notification-message' onClick={() => action(id)}>
+          <div className='notification-message' onClick={() => viewAction(id)}>
             <div className='notification-message-left' >
               <div className='notification-user-link'>
                 <ImageLoader imgProps={{className: 'account-dropdown-avatar notification-img'}} src={avatarUrl} wrapper={React.DOM.div}

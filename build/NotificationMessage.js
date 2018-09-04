@@ -47,24 +47,24 @@ var NotificationMessage = function (_React$Component) {
           unviewed = _props$notification.unviewed,
           likes = _props$notification.likes,
           comments = _props$notification.comments,
+          worldUuid = _props$notification.world_uuid,
           id = _props$notification.notification_id;
       var _props = this.props,
           avatarUrl = _props.avatarUrl,
           screenshotUrl = _props.screenshotUrl,
           worldUrl = _props.worldUrl,
-          action = _props.action;
-
+          viewAction = _props.viewAction;
 
       return _react2.default.createElement(
         _reactRouter.Link,
-        { to: worldUrl, target: '_blank' },
+        { to: worldUrl + '/' + worldUuid, target: '_blank' },
         _react2.default.createElement(
           'div',
           { className: unviewed ? 'notification-unviewed' : 'notification-viewed' },
           _react2.default.createElement(
             'div',
             { className: 'notification-message', onClick: function onClick() {
-                return action(id);
+                return viewAction(id);
               } },
             _react2.default.createElement(
               'div',

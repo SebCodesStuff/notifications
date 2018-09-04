@@ -26,7 +26,7 @@ class Notifications extends React.Component {
   messages (notifications) {
     return notifications.map(notification => {
       const { avatar, screenshot, user_uuid: userUuid, world_uuid: worldUuid } = notification
-      const { worldCdn, placeholderAvatarImg, fallbackImage, worldUrl, action } = this.props
+      const { worldCdn, placeholderAvatarImg, fallbackImage, worldUrl, viewAction } = this.props
       const avUrl = avatar ? `${worldCdn}/v1/users/${userUuid}/${avatar}` : placeholderAvatarImg
       const scrUrl = screenshot ? `${worldCdn}/v1/worlds/${worldUuid}/${screenshot}` : fallbackImage
       return (
@@ -38,7 +38,7 @@ class Notifications extends React.Component {
           placeholderAvatarImg={placeholderAvatarImg}
           fallbackImage={fallbackImage}
           worldUrl={worldUrl}
-          viewAction={action} />
+          viewAction={viewAction} />
       )
     })
   }
