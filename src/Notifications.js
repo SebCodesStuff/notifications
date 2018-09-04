@@ -35,7 +35,6 @@ class Notifications extends React.Component {
           avatarUrl={avUrl}
           screenshotUrl={scrUrl}
           notification={notification}
-          worldCdn={worldCdn}
           placeholderAvatarImg={placeholderAvatarImg}
           fallbackImage={fallbackImage}
           worldUrl={worldUrl}

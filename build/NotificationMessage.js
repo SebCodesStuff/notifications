@@ -111,7 +111,7 @@ var NotificationMessage = function (_React$Component) {
     key: 'commentCounter',
     value: function commentCounter(count) {
       var message = 'commented on your scene.';
-      if (count === 1) return message + ' You have ' + (count - 1) + ' other comment on your scene';else if (count === 2) return;else return message + ' You have ' + (count - 1) + ' other comments on your scene';
+      if (count === 1) return message;else if (count === 2) return message + ' You have ' + (count - 1) + ' other comment on your scene.';else return message + ' You have ' + (count - 1) + ' other comments on your scene.';
     }
   }, {
     key: 'avatarPlaceHolder',

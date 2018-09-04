@@ -6,11 +6,11 @@ import MomentHelper from './MomentHelper'
 export default class NotificationMessage extends React.Component {
 
   render () {
-    const { received_at, name, type, unviewed, likes, comments, notification_id: id } = this.props.notification
+    const { received_at, name, type, unviewed, likes, comments, world_uuid: worldUuid, notification_id: id } = this.props.notification
     const { avatarUrl, screenshotUrl, worldUrl, action } = this.props
 
     return (
-      <Link to={worldUrl} target='_blank'>
+      <Link to={`${worldUrl}/${worldUuid}`} target='_blank'>
         <div className={unviewed ? 'notification-unviewed' : 'notification-viewed'}>
           <div className='notification-message' onClick={() => action(id)}>
             <div className='notification-message-left' >
@@ -43,9 +43,9 @@ export default class NotificationMessage extends React.Component {
 
   commentCounter (count) {
     let message = 'commented on your scene.'
-    if (count === 1) return `${message} You have ${count - 1} other comment on your scene`
-    else if (count === 2) return
-    else return `${message} You have ${count - 1} other comments on your scene`
+    if (count === 1) return message
+    else if (count === 2) return `${message} You have ${count - 1} other comment on your scene.`
+    else return `${message} You have ${count - 1} other comments on your scene.`
   }
 
   avatarPlaceHolder (placeholderAvatarImg) {
