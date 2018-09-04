@@ -1,5 +1,6 @@
-.notification-dropdown {
-  @include scrollbars(white, $color-grey2, $color-grey2);
+@mixin highlight-text{
+  color: $color-primary;
+  font-weight: bold;
 }
 
 .notifications-mark-all-as-read {
@@ -9,15 +10,10 @@
   font-weight: 600;
   border-bottom: 1px solid $color-grey2;   
   padding-bottom: 10px;
-
+  
   &:hover {
     color: $color-accent;
   }
-}
-
-.notification-message-container {
-  max-height: 250px;
-  overflow-y: auto;
 }
 
 .show-notification {
@@ -29,4 +25,86 @@
 
 .hide-notification {
   display: none;
+}
+
+.notification-dropdown {
+  @include scrollbars(white, $color-grey2, $color-grey2);
+}
+
+.notification-message-container {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.notification-message {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.notification-message-left {
+  display: flex;
+  align-items: center;
+}
+
+.notification-message-content {
+  margin: 10px;
+  display: flex;
+  white-space: normal;
+  align-items: baseline;
+  flex-wrap: wrap;
+
+  p {
+    display: inline;
+    align-items: baseline;
+    margin: 0;
+    line-height: 1em;
+  }
+}
+.notification-sender-name {
+  @include highlight-text;
+  margin-right:4px;
+}
+
+.notification-time {
+  color: $color-grey3;
+  margin-left: 4px;  
+}
+
+.notification-img {
+  margin-top: 4px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.notifications-empty {
+  @include highlight-text;
+}
+
+.notification-user-link {
+  position: relative;
+}
+
+.notification-viewed {
+  background-color: white;
+  border-bottom: 1px solid $color-grey2;
+  width: 300px;
+
+  &:hover {
+    background-color: rgba(172, 157, 255,0.5);
+  }
+}
+
+.notification-unviewed {
+  background-color: rgba(172, 157, 255,0.3);
+  border-bottom: 1px solid $color-grey2;
+  width: 300px;
+
+  &:hover {
+    background-color: rgba(172, 157, 255,0.5);
+  }
 }
