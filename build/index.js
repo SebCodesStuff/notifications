@@ -25,7 +25,7 @@ var _NotificationDot = require('./NotificationDot');
 
 var _NotificationDot2 = _interopRequireDefault(_NotificationDot);
 
-require('../sass/main.scss');
+require('../build/css/main.css');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

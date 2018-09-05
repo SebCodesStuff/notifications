@@ -4,6 +4,6 @@ import MomentHelper from './MomentHelper'
 import NotificationMessage from './NotificationMessage'
 import NotificationDot from './NotificationDot'
 
-import '../sass/main.scss'
+import '../build/css/main.css'
 
 export { Notifications, InfiniteScroll, MomentHelper, NotificationMessage, NotificationDot }

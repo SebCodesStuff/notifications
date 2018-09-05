@@ -1,0 +1,102 @@
+.notifications-mark-all-as-read {
+  display: flex;
+  justify-content: flex-end;
+  color: #5C41B4;
+  font-weight: 600;
+  border-bottom: 1px solid #D4D1D9;
+  padding-bottom: 10px; }
+  .notifications-mark-all-as-read:hover {
+    color: #21D9BB; }
+
+.show-notification {
+  background-color: red;
+  border-radius: 50%;
+  float: right;
+  position: absolute; }
+
+.hide-notification {
+  display: none; }
+
+.notification-dropdown ::-webkit-scrollbar {
+  width: 14px;
+  height: 18px;
+  border-radius: 9px;
+  cursor: pointer; }
+
+.notification-dropdown ::-webkit-scrollbar-thumb {
+  background: #D4D1D9;
+  border-width: 3px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 8px;
+  cursor: pointer; }
+
+.notification-dropdown ::-webkit-scrollbar-track {
+  background: #D4D1D9;
+  border: 6px solid white;
+  border-radius: 10px;
+  cursor: pointer; }
+
+.notification-message-container {
+  max-height: 250px;
+  overflow-y: auto; }
+
+.notification-message {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5px;
+  padding: 5px; }
+
+.notification-message-left {
+  display: flex;
+  align-items: center; }
+
+.notification-message-content {
+  margin: 10px;
+  display: flex;
+  white-space: normal;
+  align-items: baseline;
+  flex-wrap: wrap; }
+  .notification-message-content p {
+    display: inline;
+    align-items: baseline;
+    margin: 0;
+    line-height: 1em; }
+
+.notification-sender-name {
+  color: #5C41B4;
+  font-weight: bold;
+  margin-right: 4px; }
+
+.notification-time {
+  color: #827C91;
+  margin-left: 4px; }
+
+.notification-img {
+  margin-top: 4px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer; }
+
+.notifications-empty {
+  color: #5C41B4;
+  font-weight: bold; }
+
+.notification-user-link {
+  position: relative; }
+
+.notification-viewed {
+  background-color: white;
+  border-bottom: 1px solid #D4D1D9;
+  width: 300px; }
+  .notification-viewed:hover {
+    background-color: rgba(172, 157, 255, 0.5); }
+
+.notification-unviewed {
+  background-color: rgba(172, 157, 255, 0.3);
+  border-bottom: 1px solid #D4D1D9;
+  width: 300px; }
+  .notification-unviewed:hover {
+    background-color: rgba(172, 157, 255, 0.5); }
