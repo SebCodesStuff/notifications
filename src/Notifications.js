@@ -17,13 +17,13 @@ class Notifications extends React.Component {
       <div className='notification-dropdown'>
         <div className='notifications-mark-all-as-read' onClick={() => markAllAction()}>Mark All as Read</div>
         <div className='notification-message-container'>
-          {this.messages(notifications)}
+          {this.getMessages(notifications)}
         </div>
       </div>
     )
   }
 
-  messages (notifications) {
+  getMessages (notifications) {
     return notifications.map(notification => {
       const { avatar, screenshot, user_uuid: userUuid, world_uuid: worldUuid } = notification
       const { worldCdn, placeholderAvatarImg, fallbackImage, worldUrl, viewAction } = this.props
