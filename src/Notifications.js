@@ -1,12 +1,14 @@
 import React from 'react'
 import NotificationMessage from './NotificationMessage'
 
+const DEFAULT_EMPTY = 'You have no notifications to show!'
+
 class Notifications extends React.Component {
   render () {
-    const { notifications } = this.props
+    const { className, notifications, emptyMessage = DEFAULT_EMPTY } = this.props
     return (
-      <div>
-        {notifications.length ? this.hasMessages(notifications) : this.emptyInbox()}
+      <div className={className}>
+        { notifications.length ? this.hasMessages(notifications) : this.emptyInbox(emptyMessage) }
       </div>
     )
   }
@@ -15,9 +17,11 @@ class Notifications extends React.Component {
     const { markAllAction } = this.props
     return (
       <div className='notification-dropdown'>
-        <div className='notifications-mark-all-as-read' onClick={() => markAllAction()}>Mark All as Read</div>
+        <div className='notifications-mark-all-as-read' onClick={() => markAllAction()}>
+          { 'Mark All as Read' }
+        </div>
         <div className='notification-message-container'>
-          {this.getMessages(notifications)}
+          { this.getMessages(notifications) }
         </div>
       </div>
     )
@@ -43,9 +47,11 @@ class Notifications extends React.Component {
     })
   }
 
-  emptyInbox () {
+  emptyInbox (message) {
     return (
-      <div className='notifications-empty'>Sorry you have no notifications to show</div>
+      <div className='notifications-empty'>
+        { message }
+      </div>
     )
   }
 }

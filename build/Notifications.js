@@ -22,6 +22,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var DEFAULT_EMPTY = 'You have no notifications to show!';
+
 var Notifications = function (_React$Component) {
   _inherits(Notifications, _React$Component);
 
@@ -34,12 +36,16 @@ var Notifications = function (_React$Component) {
   _createClass(Notifications, [{
     key: 'render',
     value: function render() {
-      var notifications = this.props.notifications;
+      var _props = this.props,
+          className = _props.className,
+          notifications = _props.notifications,
+          _props$emptyMessage = _props.emptyMessage,
+          emptyMessage = _props$emptyMessage === undefined ? DEFAULT_EMPTY : _props$emptyMessage;
 
       return _react2.default.createElement(
         'div',
-        null,
-        notifications.length ? this.hasMessages(notifications) : this.emptyInbox()
+        { className: className },
+        notifications.length ? this.hasMessages(notifications) : this.emptyInbox(emptyMessage)
       );
     }
   }, {
@@ -60,13 +66,13 @@ var Notifications = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'notification-message-container' },
-          this.messages(notifications)
+          this.getMessages(notifications)
         )
       );
     }
   }, {
-    key: 'messages',
-    value: function messages(notifications) {
+    key: 'getMessages',
+    value: function getMessages(notifications) {
       var _this2 = this;
 
       return notifications.map(function (notification) {
@@ -74,12 +80,12 @@ var Notifications = function (_React$Component) {
             screenshot = notification.screenshot,
             userUuid = notification.user_uuid,
             worldUuid = notification.world_uuid;
-        var _props = _this2.props,
-            worldCdn = _props.worldCdn,
-            placeholderAvatarImg = _props.placeholderAvatarImg,
-            fallbackImage = _props.fallbackImage,
-            worldUrl = _props.worldUrl,
-            viewAction = _props.viewAction;
+        var _props2 = _this2.props,
+            worldCdn = _props2.worldCdn,
+            placeholderAvatarImg = _props2.placeholderAvatarImg,
+            fallbackImage = _props2.fallbackImage,
+            worldUrl = _props2.worldUrl,
+            viewAction = _props2.viewAction;
 
         var avUrl = avatar ? worldCdn + '/v1/users/' + userUuid + '/' + avatar : placeholderAvatarImg;
         var scrUrl = screenshot ? worldCdn + '/v1/worlds/' + worldUuid + '/' + screenshot : fallbackImage;
@@ -96,11 +102,11 @@ var Notifications = function (_React$Component) {
     }
   }, {
     key: 'emptyInbox',
-    value: function emptyInbox() {
+    value: function emptyInbox(message) {
       return _react2.default.createElement(
         'div',
         { className: 'notifications-empty' },
-        'Sorry you have no notifications to show'
+        message
       );
     }
   }]);

@@ -8,9 +8,10 @@
   justify-content: flex-end;
   color: $color-primary;
   font-weight: 600;
-  border-bottom: 1px solid $color-grey2;   
+  border-bottom: 1px solid $color-grey2;
   padding-bottom: 10px;
-  
+  cursor: pointer;
+
   &:hover {
     color: $color-accent;
   }
@@ -71,7 +72,7 @@
 
 .notification-time {
   color: $color-grey3;
-  margin-left: 4px;  
+  margin-left: 4px;
 }
 
 .notification-img {
