@@ -4,7 +4,8 @@
   color: #5C41B4;
   font-weight: 600;
   border-bottom: 1px solid #D4D1D9;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  cursor: pointer; }
   .notifications-mark-all-as-read:hover {
     color: #21D9BB; }
 
