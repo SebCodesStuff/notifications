@@ -10,11 +10,11 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = require('react-router');
+var _reactRouterDom = require('react-router-dom');
 
-var _reactImageloader = require('react-imageloader');
+var _reactLoadImage = require('react-load-image');
 
-var _reactImageloader2 = _interopRequireDefault(_reactImageloader);
+var _reactLoadImage2 = _interopRequireDefault(_reactLoadImage);
 
 var _MomentHelper = require('./MomentHelper');
 
@@ -50,13 +50,15 @@ var NotificationMessage = function (_React$Component) {
           worldUuid = _props$notification.world_uuid,
           id = _props$notification.notification_id;
       var _props = this.props,
-          avatarUrl = _props.avatarUrl,
-          screenshotUrl = _props.screenshotUrl,
+          _props$avatarUrl = _props.avatarUrl,
+          avatarUrl = _props$avatarUrl === undefined ? '' : _props$avatarUrl,
+          _props$screenshotUrl = _props.screenshotUrl,
+          screenshotUrl = _props$screenshotUrl === undefined ? '' : _props$screenshotUrl,
           worldUrl = _props.worldUrl,
           viewAction = _props.viewAction;
 
       return _react2.default.createElement(
-        _reactRouter.Link,
+        _reactRouterDom.Link,
         { to: worldUrl + '/' + worldUuid, target: '_blank' },
         _react2.default.createElement(
           'div',
@@ -72,8 +74,13 @@ var NotificationMessage = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'notification-user-link' },
-                _react2.default.createElement(_reactImageloader2.default, { imgProps: { className: 'account-dropdown-avatar notification-img' }, src: avatarUrl, wrapper: _react2.default.DOM.div,
-                  preloader: this.avatarPlaceHolder })
+                _react2.default.createElement(
+                  _reactLoadImage2.default,
+                  { src: avatarUrl },
+                  _react2.default.createElement('img', { className: 'account-dropdown-avatar notification-img' }),
+                  null,
+                  this.getAvatarPlaceHolder()
+                )
               ),
               _react2.default.createElement(
                 'div',
@@ -95,8 +102,13 @@ var NotificationMessage = function (_React$Component) {
                 )
               )
             ),
-            _react2.default.createElement(_reactImageloader2.default, { imgProps: { className: 'notification-img' }, src: screenshotUrl, wrapper: _react2.default.DOM.div,
-              preloader: this.screenshotPlaceHolder })
+            _react2.default.createElement(
+              _reactLoadImage2.default,
+              { src: screenshotUrl },
+              _react2.default.createElement('img', { className: 'notification-img' }),
+              null,
+              this.getScreenshotPlaceHolder()
+            )
           )
         )
       );
@@ -114,13 +126,13 @@ var NotificationMessage = function (_React$Component) {
       if (count === 1) return message;else if (count === 2) return message + ' You have ' + (count - 1) + ' other comment on your scene.';else return message + ' You have ' + (count - 1) + ' other comments on your scene.';
     }
   }, {
-    key: 'avatarPlaceHolder',
-    value: function avatarPlaceHolder(placeholderAvatarImg) {
+    key: 'getAvatarPlaceHolder',
+    value: function getAvatarPlaceHolder(placeholderAvatarImg) {
       return _react2.default.createElement('img', { src: placeholderAvatarImg, className: 'account-dropdown-avatar' });
     }
   }, {
-    key: 'screenshotPlaceHolder',
-    value: function screenshotPlaceHolder(fallbackImage) {
+    key: 'getScreenshotPlaceHolder',
+    value: function getScreenshotPlaceHolder(fallbackImage) {
       return _react2.default.createElement('img', { src: fallbackImage, className: 'account-dropdown-avatar' });
     }
   }]);
