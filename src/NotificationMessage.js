@@ -1,21 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router'
-import ImageLoader from 'react-imageloader'
+import { Link } from 'react-router-dom'
+import ImageLoader from 'react-load-image'
 import MomentHelper from './MomentHelper'
 
 export default class NotificationMessage extends React.Component {
-
   render () {
     const { received_at, name, type, unviewed, likes, comments, world_uuid: worldUuid, notification_id: id } = this.props.notification
-    const { avatarUrl, screenshotUrl, worldUrl, viewAction } = this.props
+    const { avatarUrl = '', screenshotUrl = '', worldUrl, viewAction } = this.props
     return (
       <Link to={`${worldUrl}/${worldUuid}`} target='_blank'>
         <div className={unviewed ? 'notification-unviewed' : 'notification-viewed'}>
           <div className='notification-message' onClick={() => viewAction(id)}>
             <div className='notification-message-left' >
               <div className='notification-user-link'>
-                <ImageLoader imgProps={{className: 'account-dropdown-avatar notification-img'}} src={avatarUrl} wrapper={React.DOM.div}
-                  preloader={this.avatarPlaceHolder} />
+                <ImageLoader src={avatarUrl}>
+                  <img className='account-dropdown-avatar notification-img' />
+                  { null }
+                  { this.getAvatarPlaceHolder() }
+                </ImageLoader>
               </div>
               <div className='notification-message-content'>
                 <div className='notification-sender-name'>
@@ -25,8 +27,11 @@ export default class NotificationMessage extends React.Component {
                 <div className='notification-time'>{MomentHelper.timeFromNow(received_at)}</div>
               </div>
             </div>
-            <ImageLoader imgProps={{className: 'notification-img'}} src={screenshotUrl} wrapper={React.DOM.div}
-              preloader={this.screenshotPlaceHolder} />
+            <ImageLoader src={screenshotUrl}>
+              <img className='notification-img' />
+              { null }
+              { this.getScreenshotPlaceHolder() }
+            </ImageLoader>
           </div>
         </div>
       </Link>
@@ -47,11 +52,11 @@ export default class NotificationMessage extends React.Component {
     else return `${message} You have ${count - 1} other comments on your scene.`
   }
 
-  avatarPlaceHolder (placeholderAvatarImg) {
+  getAvatarPlaceHolder (placeholderAvatarImg) {
     return <img src={placeholderAvatarImg} className='account-dropdown-avatar' />
   }
 
-  screenshotPlaceHolder (fallbackImage) {
+  getScreenshotPlaceHolder (fallbackImage) {
     return <img src={fallbackImage} className='account-dropdown-avatar' />
   }
 }
