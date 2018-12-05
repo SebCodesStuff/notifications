@@ -1,9 +1,18 @@
 import React from 'react'
 
 const NotificationDot = (props) => {
-  const { show, style } = props
+  const { text, style, textStyle, tooltip } = props
+
+  const getToolTip = {
+    'data-tip': tooltip,
+    'data-place': 'top',
+    'data-type': 'error'
+  }
+
   return (
-    <div className={show ? 'show-notification' : 'hide-notification'} style={style} />
+    <div className='notification-dot' style={style} {...getToolTip} >
+      <p style={textStyle} {...getToolTip}>{text}</p>
+    </div>
   )
 }
 
