@@ -9,14 +9,11 @@
   .notifications-mark-all-as-read:hover {
     color: #21D9BB; }
 
-.show-notification {
+.notification-dot {
   background-color: red;
   border-radius: 50%;
   float: right;
   position: absolute; }
-
-.hide-notification {
-  display: none; }
 
 .notification-dropdown ::-webkit-scrollbar {
   width: 14px;
