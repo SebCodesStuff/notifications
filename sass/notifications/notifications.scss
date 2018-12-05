@@ -18,10 +18,17 @@
 }
 
 .notification-dot {
-  background-color: red;
+  background-color: $color-alert;
   border-radius: 50%;
   float: right;
   position: absolute;
+  p {
+    color: white;
+    margin-top: -2px;
+    font-size: 18px;
+    font-weight: 700px;
+    text-align: center;
+  }
 }
 
 .notification-dropdown {

@@ -10,10 +10,16 @@
     color: #21D9BB; }
 
 .notification-dot {
-  background-color: red;
+  background-color: #D93C3C;
   border-radius: 50%;
   float: right;
   position: absolute; }
+  .notification-dot p {
+    color: white;
+    margin-top: -2px;
+    font-size: 18px;
+    font-weight: 700px;
+    text-align: center; }
 
 .notification-dropdown ::-webkit-scrollbar {
   width: 14px;

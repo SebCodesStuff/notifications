@@ -15,7 +15,8 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-load-image": "^0.1.6",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "react-tooltip": "^3.2.7"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

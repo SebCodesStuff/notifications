@@ -1,19 +1,26 @@
 import React from 'react'
+import ReactTooltip from 'react-tooltip'
 
-const NotificationDot = (props) => {
-  const { text, style, textStyle, tooltip } = props
+export default class NotificationDot extends React.Component {
 
-  const getToolTip = {
-    'data-tip': tooltip,
-    'data-place': 'top',
-    'data-type': 'error'
+  componentDidMount () {
+    ReactTooltip.rebuild()
   }
 
-  return (
-    <div className='notification-dot' style={style} {...getToolTip} >
-      <p style={textStyle} {...getToolTip}>{text}</p>
-    </div>
-  )
-}
+  render () {
+    const { text, style, textStyle, tooltip } = this.props
+    return (
+      <div className='notification-dot' style={style} {...this.getTooltipProps(tooltip)} >
+        <p style={textStyle}>{text}</p>
+      </div>
+    )
+  }
 
-export default NotificationDot
+  getTooltipProps (tooltip) {
+    return {
+      'data-tip': tooltip,
+      'data-place': 'top',
+      'data-type': 'error'
+    }
+  }
+}
