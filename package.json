@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register test/ --recursive",
     "build-css": "node-sass --include-path scss sass/main.scss build/css/main.css",
-    "build": "babel src --out-dir build --ignore test,node_modules src && npm run build-css"
+    "build": "babel src --out-dir build --ignore test,node_modules src && npm run build-css",
+    "dev": "node src/index.js"
   },
   "author": "BrioVR",
   "license": "ISC",
