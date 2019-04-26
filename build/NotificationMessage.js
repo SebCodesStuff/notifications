@@ -10,8 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = require('react-router-dom');
-
 var _reactLoadImage = require('react-load-image');
 
 var _reactLoadImage2 = _interopRequireDefault(_reactLoadImage);
@@ -58,57 +56,53 @@ var NotificationMessage = function (_React$Component) {
           viewAction = _props.viewAction;
 
       return _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: worldUrl + '/' + worldUuid, target: '_blank' },
+        'div',
+        { className: unviewed ? 'notification-unviewed' : 'notification-viewed' },
         _react2.default.createElement(
           'div',
-          { className: unviewed ? 'notification-unviewed' : 'notification-viewed' },
+          { className: 'notification-message', onClick: function onClick() {
+              return viewAction(id);
+            } },
           _react2.default.createElement(
             'div',
-            { className: 'notification-message', onClick: function onClick() {
-                return viewAction(id);
-              } },
+            { className: 'notification-message-left' },
             _react2.default.createElement(
               'div',
-              { className: 'notification-message-left' },
+              { className: 'notification-user-link' },
+              _react2.default.createElement(
+                _reactLoadImage2.default,
+                { src: avatarUrl },
+                _react2.default.createElement('img', { className: 'account-dropdown-avatar notification-img' }),
+                null,
+                this.getAvatarPlaceHolder()
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'notification-message-content' },
               _react2.default.createElement(
                 'div',
-                { className: 'notification-user-link' },
+                { className: 'notification-sender-name' },
+                name + ' ',
                 _react2.default.createElement(
-                  _reactLoadImage2.default,
-                  { src: avatarUrl },
-                  _react2.default.createElement('img', { className: 'account-dropdown-avatar notification-img' }),
+                  'p',
                   null,
-                  this.getAvatarPlaceHolder()
+                  type === 'like' ? this.likeCounter(likes) : this.commentCounter(comments)
                 )
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'notification-message-content' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'notification-sender-name' },
-                  name + ' ',
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    type === 'like' ? this.likeCounter(likes) : this.commentCounter(comments)
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'notification-time' },
-                  _MomentHelper2.default.timeFromNow(received_at)
-                )
+                { className: 'notification-time' },
+                _MomentHelper2.default.timeFromNow(received_at)
               )
-            ),
-            _react2.default.createElement(
-              _reactLoadImage2.default,
-              { src: screenshotUrl },
-              _react2.default.createElement('img', { className: 'notification-img' }),
-              null,
-              this.getScreenshotPlaceHolder()
             )
+          ),
+          _react2.default.createElement(
+            _reactLoadImage2.default,
+            { src: screenshotUrl },
+            _react2.default.createElement('img', { className: 'notification-img' }),
+            null,
+            this.getScreenshotPlaceHolder()
           )
         )
       );

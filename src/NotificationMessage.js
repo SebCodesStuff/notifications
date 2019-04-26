@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import ImageLoader from 'react-load-image'
 import MomentHelper from './MomentHelper'
 
@@ -8,7 +7,7 @@ export default class NotificationMessage extends React.Component {
     const { received_at, name, type, unviewed, likes, comments, world_uuid: worldUuid, notification_id: id } = this.props.notification
     const { avatarUrl = '', screenshotUrl = '', worldUrl, viewAction } = this.props
     return (
-      <Link to={`${worldUrl}/${worldUuid}`} target='_blank'>
+
         <div className={unviewed ? 'notification-unviewed' : 'notification-viewed'}>
           <div className='notification-message' onClick={() => viewAction(id)}>
             <div className='notification-message-left' >
@@ -34,7 +33,7 @@ export default class NotificationMessage extends React.Component {
             </ImageLoader>
           </div>
         </div>
-      </Link>
+
     )
   }
 
